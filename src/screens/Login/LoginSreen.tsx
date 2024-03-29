@@ -18,6 +18,8 @@ import { LoginFacebook, LoginGoogle, isLoading, isLogin, updatePass, updateUser 
 import { NativeStackHeaderProps } from '@react-navigation/native-stack';
 import Spinner from 'react-native-loading-spinner-overlay';
 import Loading from '../../component/Loading/Loading';
+import Navigation from '../../component/Navigation/Navigation';
+import { RootStackScreenEnumHome } from '../../component/Root/RootStackHome';
 
 interface Login {
   email: string;
@@ -67,9 +69,6 @@ const LoginScreen = (props: any) => {
   }
   const handlePass = () => {
     dispatch(updatePass(password))
-  }
-  const handleLogin = () => {
-    dispatch(isLogin(false));
   }
   const login = async (info: Login) => {
     const emailPattern = /^[a-zA-Z0-9._-]+@gmail.com$/;
@@ -242,9 +241,6 @@ const LoginScreen = (props: any) => {
       <Loading />
 
       <View style={{ paddingHorizontal: PADDING_HORIZONTAL, paddingTop: PADDING_TOP, width: WIDTH, backgroundColor: BG_COLOR, height: HEIGHT }}>
-        <Pressable style={{ position: 'absolute', left: 10, top: 10 }} onPress={handleLogin}>
-          <Icon name='chevron-back-outline' size={28} />
-        </Pressable>
         <View style={styles.header}>
           <Image style={{ width: 130, height: 130 }} source={require('../../asset/image/logoTW.png')} />
           <Text style={styles.textHeader}>The Wonder</Text>
